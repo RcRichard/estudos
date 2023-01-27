@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar idade</title>
+</head>
+<body>
+    <h1>Consulte sua idade para o Voto eleitoral</h1>
+    <label for="idade">Digite sua idade:</label>
+    <input type="number" name="idade" id="idadetxt">
+    <input type="button" value="Consultar" onclick="consultar()" >
+    <div id="res">
+
+    </div>
+    <script>
+        function consultar(){
+            var idadetxt = document.getElementById('idadetxt')
+            var idade = Number(idadetxt.value)
+            var res = document.getElementById('res')
+            
+            res.innerHTML = `<p>Você tem ${idade} anos</p> `
+            document.log('aa')
+           
+            if(idade < 16){
+                
+                res.innerHTML = 'Não vota!'
+            } else if ( idade >= 16 && idade < 18 || idade >= 67 ){
+                res.innerHTML = 'Voto opcional!' 
+            } else {
+                res.innerHTML = 'Voto obrigatorio!'
+            }
+            
+
+        }
+    </script>
+</body>
+</html>

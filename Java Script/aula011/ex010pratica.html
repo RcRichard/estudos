@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado</title>
+</head>
+<body>
+    <h1>Digite seu Pais de Origem !</h1>
+    <label for="estadotxt">O seu pais é :</label>
+    <input type="text" name="estadotxt" id="estadotxt">
+    <input type="button" value="Confirmar !" onclick="clicar()" >
+    <div id="estado-selecionado">
+
+    </div>
+    <script>
+        function clicar(){
+            var estadotxt = document.getElementById('estadotxt')
+            var estado = (estadotxt.value)
+            var estadoR = document.getElementById('estado-selecionado')
+            estadoR.innerHTML = '<p> Olá !</p>'
+
+            if (estado == 'Brasil'){
+                estadoR.innerHTML += '<p>Você é <strong>Brasileiro</strong>, seja Bem vindo de volta !</p>'
+            
+            } else{
+                estadoR.innerHTML += '<p>Você é <strong>Estrangeiro</strong>, seja Bem vindo ao Brasil !</p>'
+            }
+        }
+    </script>
+</body>
+</html>
