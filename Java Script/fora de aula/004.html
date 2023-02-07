@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>DESCUBRA OS TIPOS PRIMITIVOS</h1>
+    <label for="tipotxt">Defina uma variavel:</label>
+    <input type=""  name="tipotxt"  id="tipotxt">
+    <input type="button" value="analisar" onclick="analisar()">
+    <div id="res"></div>
+
+    <script>
+       function analisar(){
+        var tipotxt = document.getElementById('tipotxt')
+        var tipo = (tipotxt.value)
+        var res = document.getElementById('res')
+
+        res.innerHTML = `O tipo Primitivo desta variável é ${typeof tipo} `
+        
+       }
+
+    </script>
+
+</body>
+</html>
