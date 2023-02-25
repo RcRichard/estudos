@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="Pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+</head>
+<body>
+    <header>
+        <h1>Par ou Ímpar</h1>
+    </header>
+    <section>
+        <div>
+            <p>Digite um número:
+                <input type="number" name="" id="txtnum">
+            </p>
+            <input type="button" value="Calcular!" onclick="calcular()">
+        </div>
+        <div id="tabuada">
+
+        </div>
+    </section>
+    <script>
+        
+        function calcular(n){
+            var num = document.getElementById('txtnum')
+            var tab = document.getElementById('tabuada')
+            
+            if( num.value.length == 0 ){
+                window.alert('Valor invalido')
+            } else if(n%2 == 0) {
+                var n = Number(num.value) 
+                return `par`
+                var res = calcular(2)
+
+            } else {
+                return 'impar'
+                var res = calcular(2)
+            }
+             
+    
+
+        }
+    </script>
+</body>
+</html>

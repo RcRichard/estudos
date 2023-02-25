@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="Pt-bt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+    <section>
+        <div>
+            <p>Digite um número:
+                <input type="number" name="" id="txtnum">
+            </p>
+            <input type="button" value="Calcular!" onclick="calcular()">
+        </div>
+        <div id="tabuada">
+
+        </div>
+    </section>
+    <script>
+        
+        function calcular(){
+            var num = document.getElementById('txtnum')
+            var tab = document.getElementById('tabuada')
+            
+            if( num.value.length == 0 ){
+                window.alert('Valor invalido')
+            } else{
+
+                var n = Number(num.value) 
+
+                for(var c=1; c < 10; c++){
+                    tab.innerHTML = `${c} x ${n}`
+                }
+               
+
+
+
+            }
+        }
+    </script>
+</body>
+</html>
