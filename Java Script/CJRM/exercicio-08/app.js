@@ -6,6 +6,15 @@
   - Previna que esses parâmetros recebam undefined;
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
+/*const twoNumbers = function(firstNumber = 0, secondNunber = 0){
+  return firstNumber * secondNunber
+}
+
+let numbers = twoNumbers(2, 8)
+console.log(numbers)*/
+
+
+
 
 /*
   02
@@ -14,6 +23,13 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+/*const twoNumbers = function(firstNumber = 0, secondNumber = 0){
+  return firstNumber / secondNumber
+}
+
+let number = twoNumbers(8,2)
+console.log(number)*/
 
 /*
   03
@@ -27,6 +43,14 @@
 
   "Esta é a Xª vez que essa string é exibida."
 */
+/*const log = function(value = 'Contagem...'){
+  console.log(value)
+}
+
+for(let i = 0; i < 7; i++){
+  log(`Esta é a ${i + 1}ª vez que essa string é exibida.`)
+}*/
+
 
 /*
   04
@@ -39,7 +63,17 @@
     função.
 */
 
-const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+/*const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+
+const tranformToUpperCase = function(array = []){
+  let newArray = []
+  for(let i = 0; i < array.length; i++){
+    newArray.push(array[i].toUpperCase())    
+  }
+  return newArray
+}
+
+console.log(tranformToUpperCase(millennialWords))*/
 
 /*
   05
@@ -53,6 +87,24 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+/*const isPositive = function(number = 0){
+  return number >=0
+}
+let positive = 0
+let negative = 0
+let numberamount = 0
+
+for(let i = 0; i < randomNumbers.length; i++){
+  if(isPositive(randomNumbers[i])){
+    positive++
+  } else{
+    negative++
+  }
+
+  numberamount++
+}
+
+console.log(`O array "randomNumbers" possui ${numberamount} números, sendo ${positive} positivos e ${negative} negativos.`)*/
 
 /*
   06
@@ -63,8 +115,19 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
   - Exiba o novo array no console, sem inserir um console.log() dentro da  
     função.
 */
+/*const getOddNumbers = function(number = []){
+  let newArray = []
+  for(let i = 0; i < number.length; i++){
+    if(number[i] % 2 !== 0){
+      newArray.push(number[i])
+    }
+  }
+  return newArray
+}
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+console.log(getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42]))*/
+
+
 
 /*
   07
@@ -72,7 +135,7 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
   - Forme uma frase com o array abaixo e exiba-a no console.
 */
 
-const functions = [
+/*const functions = [
   function () { return 'Plymouth' },
   function () { return 'é' },
   function () { return 'uma' },
@@ -101,4 +164,14 @@ const functions = [
   function () { return 'Antilhas,' },
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
+  
 ]
+
+let frase = ''
+
+for(let i = 0; i < functions.length; i++){
+  frase += `${functions[i]() }`
+ 
+}
+
+console.log(frase)*/

@@ -13,9 +13,13 @@
     valor no console.
 */
 
-function convertToString (value) {
+function convertToString(value) {
   return String(value)
 }
+
+let stringValue = convertToString('Òla, Mundo!')
+//console.log(stringValue)
+
 
 /*
   02
@@ -23,6 +27,13 @@ function convertToString (value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+function definitionString(valueString) {
+  return valueString.length
+}
+
+let indexString = definitionString('Gym')
+//console.log(indexString) 
 
 /*
   03
@@ -34,12 +45,33 @@ function convertToString (value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+function string(convertToLowerCase) {
+  return convertToLowerCase.toLowerCase()
+}
+
+let stringConvert = string('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO')
+
+//console.log(stringConvert)
+
+
+
+
+
+
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+
+function caractersAndString(caracte = 0, string = '') {
+  return string.length
+
+}
+
+//console.log(caractersAndString(0, 'Ola'))
+
 
 /*
   05
@@ -48,12 +80,24 @@ function convertToString (value) {
     passado por argumento existe no array (também passado por argumento).
 */
 
+
+const itensInclude = (item, array) => array.includes(item)
+
+//console.log(itensInclude(5, [1, 6, 5]))
+
+
+
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
+const twoArrays = (firstArray = '', seconsArray = '') => `${firstArray} ${seconsArray}`
+
+//console.log(twoArrays('Richard', 'Santos' ))
+
 
 /*
   07
@@ -61,6 +105,13 @@ function convertToString (value) {
   - Crie uma função que retorna o array passado como argumento em sua invocação,  
     mas com o último item removido.
 */
+const fraseMotivation = frase => {
+  frase.pop()
+  return frase
+}
+
+//console.log(fraseMotivation([1, 2]))
+
 
 /*
   08
@@ -68,6 +119,11 @@ function convertToString (value) {
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+const isNull = value => value === null
+
+//console.log(isNull(null))
+
+
 
 /*
   09
@@ -80,6 +136,16 @@ function convertToString (value) {
     foi exibido.
 */
 
+const invoquecallback = callback => {
+  callback()
+}
+
+const name = () => {
+  console.log('Richard Santos')
+}
+
+//invoquecallback(name)
+
 /*
   10
 
@@ -90,6 +156,16 @@ function convertToString (value) {
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+const paramCallBack = (value, callback) => {
+  return callback(value)
+}
+
+const triplo = number => number * 3
+
+//console.log(paramCallBack(33, triplo))
+
+
+
 
 /*
   11
@@ -101,6 +177,9 @@ function convertToString (value) {
 */
 
 const numbers = [1, 2, 3]
+numbers.forEach((number, index, array) =>{
+//console.log(`O ${index + 1}º item do array [${array}] é ${number}`)
+})
 
 /*
   12
@@ -113,9 +192,17 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+//for (let i = 0; i < letters.length; i++) {
+  //lettersCopy.push(letters[i])
+//}
+
+letters.forEach((letter =>{
+  lettersCopy.push(letter)
+}))
+
+//console.log(lettersCopy)
+
+
 
 /*
   13
@@ -144,9 +231,17 @@ const review = [
   'Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.'
 ]
 
+
 let paragraphs = ''
 
-section.innerHTML = paragraphs
+review.forEach((paragraph =>{
+  paragraphs +=`${paragraph}`
+}))
+
+//section.innerHTML = paragraphs
+
+
+//section.innerHTML = paragraphs
 
 /*
   14
@@ -168,3 +263,21 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const getLikeMessages = (nomes = []) => {
+  switch(nomes.length){
+    case 0 :
+    return 'Ninguém curtiu isso'
+    case 1:
+      return `${nomes[0]} curtiu isso`
+    case 2:
+      return `${nomes[0]} e ${nomes[1]} curtiram isso`
+    case 3: 
+    return `${nomes[0]}, ${nomes[1]} e ${nomes[2]} curtiram isso`
+    case 4: 
+    return `${nomes[0]}, ${nomes[1]} e mais ${nomes.length - 2} pessoas curtiram isso"`
+
+  }
+}
+
+console.log(getLikeMessages(['vanessa', 'vando', 'richard', 'Isabela-']))
