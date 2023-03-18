@@ -1,0 +1,25 @@
+body{
+    background: #eee;
+}
+
+h1{
+    text-align: center;
+}
+
+form{
+    max-width: 200px;
+    margin:40px auto ;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px;
+    padding: 10px;
+}
+
+input, button{
+    display: block;
+    margin:10px auto ;
+    padding: 4px;
+    
+    border-radius: 8px;
+
+}
