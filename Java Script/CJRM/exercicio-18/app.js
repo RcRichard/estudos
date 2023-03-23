@@ -2,6 +2,56 @@
   Apenas 3 exercícios, mas que exigem um certo nível de conhecimento do que  
   vimos até aqui =)
 */
+const inputUsername = document.querySelector('#username')
+const submitForm = document.querySelector('form')
+const button = document.querySelector('button')
+const regexUsername = /^[a-zA-Z]{6,}$/
+const paragraphUsername = document.createElement('p')
+const paragraphSubmit = document.createElement('p')
+
+
+inputUsername.addEventListener('input', event => {
+  const username = inputUsername.value
+  const isValidUsername = regexUsername.test(username)
+
+  paragraphSubmit.setAttribute('data-feedback', 'username-feedback')
+  
+  if (paragraphSubmit) {
+    paragraphSubmit.remove()
+  }
+
+  if (!isValidUsername) {
+    paragraphUsername.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e ou minúsculas'
+    paragraphUsername.setAttribute('class', 'username-help-feedback')
+    event.target.insertAdjacentElement('afterend', paragraphUsername)
+    return
+  }
+
+  paragraphUsername.textContent = 'Username válido =)'
+  paragraphUsername.setAttribute('class', 'username-success-feedback')
+  event.target.insertAdjacentElement('afterend', paragraphUsername)
+
+})
+
+
+
+submitForm.addEventListener('submit', event => {
+  event.preventDefault()
+  const inputValue = inputUsername.value
+
+  if (!regexUsername.test(inputValue)) {
+    paragraphSubmit.textContent = 'Por favor, insira um username válido'
+    button.insertAdjacentElement('afterend', paragraphSubmit)
+    paragraphSubmit.setAttribute('class', 'submit-help-feedback')
+    return
+  }
+
+
+  paragraphSubmit.textContent = 'Dados enviados =)'
+  button.insertAdjacentElement('afterend', paragraphSubmit)
+  paragraphSubmit.setAttribute('class', 'submit-success-feedback')
+})
+
 
 /*
   01
@@ -50,3 +100,19 @@
         6;
     2) Pesquisar no MDN.
 */
+
+
+const some = (array, func) => {
+
+  for (let i = 0; i < array.length; i++) {
+    if (func(array[i])) {
+      return true
+    }
+  }
+
+  return false
+}
+
+
+console.log(some([1, 2, 3], item => item > 2))
+console.log(some([1, 3, 5], item => item === 0))

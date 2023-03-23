@@ -19,14 +19,7 @@ input, button{
     display: block;
     margin:10px auto ;
     padding: 4px;
-   
+    
+    border-radius: 8px;
 
-}
-
-.success{
-    border: 2px solid green;
-}
-
-.error{
-    border: 2px solid red;
 }
