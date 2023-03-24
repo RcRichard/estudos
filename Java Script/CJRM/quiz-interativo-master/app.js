@@ -17,7 +17,6 @@ form.addEventListener('submit', event => {
          score += 25
         }
     })
-    console.log(score)
 
     
 })
