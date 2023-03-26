@@ -29,12 +29,25 @@ form.addEventListener('submit', event =>{
     console.log(userAnswers)
 
     userAnswers.forEach((userAnswers, index) =>{
-        if(userAnswers === correctAnswers[index]){
+        
+        const pontuacionUser = userAnswers === correctAnswers[index]
+
+        if(pontuacionUser){
             score += 25
         }
         
     })
     result.style.display = 'block'
-    result.textContent = ` Você acertou ${score}%`
+    scrollTo(0, 0)
+
+    let counter = 0
+    const timer = setInterval(()=>{
+        if(counter === score){
+            clearInterval(timer)
+        }
+
+        result.textContent = `Sua pontuação foi de ${counter}%`
+        counter++
+    }, 10)
 })
 

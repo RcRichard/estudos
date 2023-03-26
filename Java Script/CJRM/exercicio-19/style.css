@@ -18,9 +18,9 @@ header{
 }
 .container{
     background-color: rgba(165, 156, 156, 0.404);
-    height: 100vh;
     font-family: 'Nunito', sans-serif;
     padding: 15px;
+    height: 100%;
 }
 
 .container > p {
@@ -48,6 +48,7 @@ button{
     border: none;
     font-size: 1em;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .resultado{
