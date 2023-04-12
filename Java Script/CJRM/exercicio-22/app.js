@@ -7,6 +7,9 @@
 */
 
 const names = ['Caio', 'André', 'Dário']
+const name = names.map(nome1 => nome1)
+name.sort()
+console.log(name)
 
 /*
   02
@@ -23,6 +26,10 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
+characters.sort((characters1, characters2) => characters1.id - characters2.id)
+
+console.log(characters)
+
 /*
   03
 
@@ -32,7 +39,9 @@ const characters = [
 */
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
+numbers.sort((n1, n2) => n1 - n2 )
 
+console.log(numbers)
 /*
   04
 
@@ -40,6 +49,9 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 */
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+const biggerFifty = randomNumbers.find(item1 => item1 > 50)
+
+console.log(biggerFifty)
 
 /*
   05
@@ -50,6 +62,8 @@ const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
+const ordemInverted = people.map(name => name).sort().reverse()
+console.log(ordemInverted)
 
 /*
   06
@@ -60,6 +74,12 @@ const people = ['Cauã', 'Alfredo', 'Bruno']
 */
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
+
+const masterCheff = ingredients.reduce((act, legume) => {
+  return `${act} ${legume} cozido,`
+},'')
+
+console.log(masterCheff)
 
 /*
   07
@@ -81,6 +101,10 @@ const topBrazilmovies = [
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
 
+const wacthFilmsDisney = topBrazilmovies
+.filter(filmsDisney=>filmsDisney.distributedBy === 'Disney')
+.reduce((acc, item1) => acc + item1.peopleAmount, 0)
+console.log(wacthFilmsDisney)
 /*
   08
   
@@ -101,12 +125,32 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
+const dogs = pets.filter(dog => dog.type === 'Dog')
+.map(dog => ({
+name:dog.name, 
+age:dog.age * 7, 
+gender: dog.gender, 
+type: dog.type
+
+}))
+
+console.log(dogs)
 /*
   09
   
   - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
+
+const ul = document.querySelector('.list-group')
+
+const brasilMovies = topBrazilmovies
+.map( movie => `<li>${movie.title}</li>`)
+.join('')
+
+ul.innerHTML = brasilMovies
+
+console.log(brasilMovies)
 
 /*
   10

@@ -12,42 +12,39 @@ Independente se você já fez o quiz dos filmes enquanto acompanhava a aula, bus
 É importante que a sua versão do quiz seja feita apenas com o conteúdo que vimos até aqui.
 */
 
-const correctAnswers = ['B', 'B', 'A', 'B']
+const correctAnswer = ['B', 'B', 'A', 'B']
 const form = document.querySelector('.form')
 const result = document.querySelector('.resultado')
 
-form.addEventListener('submit', event =>{
+form.addEventListener('submit', event => {
     event.preventDefault()
+
     let score = 0
-    
-    const userAnswers = [
+    const userAnswer = [
         form.question1.value,
         form.question2.value,
         form.question3.value,
-        form.question4.value,
+        form.question4.value
+
     ]
-    console.log(userAnswers)
 
-    userAnswers.forEach((userAnswers, index) =>{
-        
-        const pontuacionUser = userAnswers === correctAnswers[index]
+    userAnswer.forEach((userAnswer, index) => {
 
-        if(pontuacionUser){
+        if (userAnswer === correctAnswer[index]) {
             score += 25
         }
-        
+        result.style.display = 'block'
+        result.textContent = score
     })
-    result.style.display = 'block'
+
     scrollTo(0, 0)
 
-    let counter = 0
-    const timer = setInterval(()=>{
-        if(counter === score){
+    let couter = 0
+    const timer = setInterval(() =>{
+        if(couter === score){
             clearInterval(timer)
         }
-
-        result.textContent = `Sua pontuação foi de ${counter}%`
-        counter++
+        result.textContent = `Sua pontuação foi de ${couter++}%`
     }, 10)
-})
 
+})
