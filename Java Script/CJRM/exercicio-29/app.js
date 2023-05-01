@@ -13,6 +13,47 @@
       executado quando o request anterior for finalizado.
 */
 
+const getTodos = (url, callback) => {
+  const request = new XMLHttpRequest
+  request.addEventListener('readystatechange', () => {
+    const isRequestOk = request.readyState === 4 && request.status === 200
+    const isRequestNoTOk = request.readyState === 4
+
+    if (isRequestOk) {
+      const data = JSON.parse(request.responseText)
+      callback(null, data)
+      return
+    }
+
+    if (isRequestNoTOk) {
+      callback(`Não foi possível obter o Pokémon`, null)
+    }
+  })
+  request.open('GET', url)
+  request.send()
+}
+
+const logPokemonData = (error, data) => error 
+? console.log(error) 
+: console.log(`Pokémon obtido: ${data.name}`)
+
+
+const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+
+const bulbasaur =  getPokemonUrl(1)
+const charmander = getPokemonUrl(4)
+const squirtle = getPokemonUrl(7)
+
+getTodos(bulbasaur, (error, data) => {
+  logPokemonData(error, data)
+  getTodos(charmander, (error, data) => {
+    logPokemonData(error, data)
+    getTodos(squirtle, (error, data) => {
+      logPokemonData(error, data)
+    })
+  })
+})
+
 /*
   02
 
@@ -32,6 +73,16 @@
     2) Pesquisar no MDN.
 */
 
+const map = (array, func) => {
+  let newArray = []
+  array.forEach(item => newArray.push(func(item)))
+  return newArray
+}
+
+console.log(map([1, 2, 3], number => number * 2))
+
+
+
 /*
   03
 
@@ -44,7 +95,7 @@ const person = {
   getName: () => this.name
 }
 
-// console.log(person.getName())
+console.log(person.getName({ name } = person))
 
 /*
   04
@@ -56,7 +107,14 @@ const person = {
 */
 
 const x = 'x'
-// const x = 'y'
+
+const getX = () => {
+  const x = 'y'
+  return x
+}
+
+console.log(x, getX())
+
 
 /*
   05
@@ -65,14 +123,14 @@ const x = 'x'
     conseguir.
 */
 
-const getFullName = (user) => {
-  const firstName = user.firstName
-  const lastName = user.lastName
+const getFullName = ({ firstName, lastName } = fullName) => `${firstName} ${lastName}`
 
-  return `${firstName} ${lastName}`
+const fullName = {
+  firstName: 'Afonso',
+  lastName: 'Solano'
 }
 
-console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
+console.log(getFullName(fullName))
 
 /*
   06
@@ -87,7 +145,23 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
     a mensagem 'Não temos o equivalente hexadecimal para COR';
   - Exiba o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
+const convertToHex = color => {
+  const colors = {
+    red: '#1255DV',
+    green: '#548DR4',
+    blue: '#698E6D',
+    yellow: '#48Q2S6',
+    gray: '#ASD785'
+  }
 
+  if (colors[color]) {
+    return `O hexadecimal para a cor ${color} é ${colors[color]}`
+  }
+
+  return `Não temos o equivalente hexadecimal para ${color}`
+}
+
+console.log(convertToHex('red'))
 
 /*
   07
@@ -105,10 +179,17 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
 */
 
 const people = [
-  { id: 5 , name: 'Angelica', age: 18, federativeUnit: 'Pernambuco' },
+  { id: 5, name: 'Angelica', age: 18, federativeUnit: 'Pernambuco' },
   { id: 81, name: 'Thales', age: 19, federativeUnit: 'São Paulo' },
   { id: 47, name: 'Ana Carolina', age: 18, federativeUnit: 'Alagoas' },
   { id: 87, name: 'Felipe', age: 18, federativeUnit: 'Minas Gerais' },
-  { id: 9 , name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
+  { id: 9, name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
+
+const agesFrequency = people.reduce((acc, person) => {
+  acc[person.age] = acc[person.age] + 1 || 1
+  return acc
+}, {})
+
+console.log(agesFrequency)
