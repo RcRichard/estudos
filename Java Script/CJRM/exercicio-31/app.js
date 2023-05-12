@@ -8,6 +8,16 @@
     do GitHub.
 */
 
+const userGitHub = async username => {
+  const response = await fetch(`https://api.github.com/users/${username}`)
+  return await response.json()
+
+}
+
+const logUserGitHub = async username =>
+  console.log(await userGitHub(username))
+
+logUserGitHub('RcRichard')
 /*
   02
 
@@ -17,6 +27,9 @@
 */
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const testNum = num => num % 2 === 0 || num % 3 === 0
+const pairNumbers = numbers.filter(testNum)
+console.log(pairNumbers)
 
 /*
   03
@@ -32,6 +45,12 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     - Rafaela => "PRaPfaPePla".
 */
 
+const myNameSpell = ['Ri', 'char', 'd']
+
+const nameInPlenguage = myNameSpell
+  .reduce((acc, syllable) => `${acc}P${syllable}`, '')
+
+console.log(nameInPlenguage)
 /*
   04
 
@@ -46,6 +65,14 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   Dica: pesquise pelo método split.
 */
+const myFirstName = 'Richard'
+const strname = myFirstName.split('')
+
+for (let i = 0; i < strname.length; i++) {
+  const letterMyname = `${strname[i]} é a ${i + 1}ª letra do meu nome`
+  console.log(letterMyname)
+}
+
 
 /*
   05
@@ -59,6 +86,14 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   Dica: pesquise pelo método Object.keys().
 */
+
+const person = {
+  name: 'Richard',
+  lastName: 'Santos',
+  age: 19
+}
+
+console.log(Object.keys(person))
 
 /*
   06
@@ -74,6 +109,12 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 */
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
+
+const searchNum = (array, numbers) => array.reduce((acc, item) => numbers === item
+  ? acc + 1
+  : acc, 0)
+
+console.log(searchNum(scores, 100))
 
 /*
   07
@@ -98,3 +139,22 @@ const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
   Dica: lembre-se que o método filter inclui o item em questão no novo array 
   que está sendo gerado **apenas** se a função retorna um valor truthy.
 */
+
+
+const filter = (array, func) => {
+  let newArray = []
+
+  array.forEach((item, index) => {
+    if (func(item, index, array)) {
+      newArray.push(item)
+    }
+  })
+
+  return newArray
+}
+
+console.log(filter([1, 2, 3], item => item < 2))
+console.log(filter([1, 2, 3], item => item))
+console.log(filter([0, 1, 2], item => item))
+console.log(filter([1, 2, 3, 5], (item, index) => item === index + 1))
+console.log(filter([1, 2, 3, 2, 1, 5], (item, index, array) => index === array.indexOf(item)))

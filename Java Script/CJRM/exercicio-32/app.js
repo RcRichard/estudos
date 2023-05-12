@@ -20,3 +20,33 @@
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+
+const form = document.querySelector('form')
+const GIFContainer = document.querySelector('div')
+
+form.addEventListener('submit', async event => {
+  event.preventDefault()
+  const inputValue = event.target.search.value
+  const myKey = '8KTWIGsn6MYajoHC7ivor2oGhCfFOsMn'
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=${myKey}&limit=1&q=${inputValue}`
+
+  try{
+    const response = await fetch(url)
+    if(!response.ok){
+      throw new Error('bagui ta tenso')
+    }
+
+    const GIFData = await response.json()
+    const downSizeGIFUrl = GIFData.data[0].images.downsized.url
+    const img = document.createElement('img')
+    img.setAttribute('src', downSizeGIFUrl)
+    img.setAttribute('alt', GIFData.data[0].title)
+    GIFContainer.insertAdjacentElement('afterbegin', img)
+    form.reset()
+    
+  }catch(error){
+    alert(`Error: ${error.message}`)
+  }
+
+})
+
